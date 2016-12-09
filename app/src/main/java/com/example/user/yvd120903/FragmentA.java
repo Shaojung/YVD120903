@@ -2,6 +2,7 @@ package com.example.user.yvd120903;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,7 @@ import android.widget.TextView;
  * A simple {@link Fragment} subclass.
  */
 public class FragmentA extends Fragment {
-
+    Button btn2;
 
     public FragmentA() {
         // Required empty public constructor
@@ -28,6 +29,7 @@ public class FragmentA extends Fragment {
         View v = inflater.inflate(R.layout.fragment_a, container, false);
         final TextView tv = (TextView) v.findViewById(R.id.textView);
         Button btn = (Button) v.findViewById(R.id.button);
+        btn2 = (Button) v.findViewById(R.id.button2);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,7 +37,19 @@ public class FragmentA extends Fragment {
             }
         });
 
+
         return v;
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        final TextView tv3 = (TextView) getActivity().findViewById(R.id.textView3);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tv3.setText("Hello 3333");
+            }
+        });
+    }
 }
